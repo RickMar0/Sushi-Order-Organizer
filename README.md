@@ -1,3 +1,5 @@
+strongly suggest to view this file in code.
+
 little organizer for your sushi orders
 
 for example:
