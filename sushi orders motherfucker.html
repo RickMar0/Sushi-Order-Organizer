@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <title>Sushi Orders Organizer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+
+  <style>
+   @import url(https://fonts.google.com/share?selection.family=Protest+Revolution);
+
+   
+
+   body {
+    max-width:90vw;
+    font-family: 'Protest Revolution';
+    font-size: 25px ;
+   }
+
+   .A {
+    max-width:50vw;
+    font-family: 'Protest Revolution';
+    font-size: 35px;
+    color: gray;
+    position: relative;
+    position: relative;
+    left: 150px;
+    top: 50px;
+   }
+
+   .B{
+    max-width:100vw;
+    font-family: 'Protest Revolution';
+    font-size: 35px;
+    color: gray;
+    position: relative;
+    left: 150px;
+    top: 50px;
+   }
+
+   .C {
+    max-width:50vw;
+    font-family: 'Protest Revolution';
+    font-size: 35px;
+    color: antiquewhite;
+    position: relative;
+    position: relative;
+    left: 150px;
+    top: 50px;
+   }
+
+   .D {
+    max-width:50vw;
+    font-family: 'Protest Revolution';
+    font-size: 35px;
+    color: antiquewhite;
+    position: relative;
+    position: relative;
+    left: 150px;
+    top: 50px;
+   }
+
+   .BG {
+    max-width:100vw;
+    object-fit: fill;
+    height: 150vh;
+    width: 100%;
+    z-index: -1;
+    position:absolute;
+    bottom: 0px;
+    left: 0px;
+   }
+  </style>
+
+</head>
+
+<body>
+
+  <p class="D">
+    put the orders all together separated by a comma,<br>do not be afraid to put the same numbers again
+  </p>
+
+  <input class="A" placeholder="e.g. 10, 10, 12">
+
+  <button onclick="buttonPress();" class="B">Organize</button>
+
+  <button  class="B" onclick="Reset();">Reset</button>
+
+  <p class="C">your organized orders will appear here</p>
+
+  <img src="../generic fuckups/Design2.jpg" class="BG">
+
+  <script>
+    
+    
+    let inputContent = document.querySelector(".A");
+    const Paragraph = document.querySelector(".C");
+
+    function buttonPress () {
+      
+      let array1 = document.querySelector(".A").value.split(','); //initialize input content
+
+      let processedArray = array1.map(item => item.trim()).filter(item => item !== ''); //isolate each order-number and trim excess spaces then save into array
+
+      const tracker = {}; //if an order-number isn't already in that array it is added with a default value of 1
+      for (let i = 0; i < processedArray.length; i++ ) {
+        if (!(processedArray[i] in tracker)) {
+          tracker[processedArray[i]] = 1;
+        }  else {tracker[processedArray[i]] ++} // for each duplicate it gets added as a +1 value to its key
+      };
+      let output = ""; // initialize empty string to hold final result
+      for (const key in tracker) {
+        output += `${key} x ${tracker[key]}<br>`;
+        Paragraph.innerHTML = output; //set the output as the paragraph's content
+      }
+      
+    }
+
+    function Reset()  {
+      Paragraph.innerHTML = "your organized orders will appear here";
+      inputContent.value = "";
+
+    }
+
+  </script>
+</body>
+</html>
