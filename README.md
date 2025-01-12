@@ -18,5 +18,5 @@ my program will process that to become:
 20 x 1
 25 x 1
 
-which is way easier to forward to your sushi place of choice
+which is way easier to forward to your friends or sushi place of choice
 have fun and bone apple tea!
