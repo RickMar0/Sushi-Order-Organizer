@@ -1,4 +1,4 @@
-strongly suggest to view this file in code.
+strongly suggest to view this file in a code editor.
 
 little organizer for your sushi orders
 
