@@ -1,0 +1,17 @@
+body {
+  background-image: url("../../Design2.jpg");
+  background-position: center;
+  background-color: darkgrey;
+  font-family: 'Protest Revolution', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.input,
+.organize,
+.reset,
+.placeholder {
+  font-family: 'Protest Revolution', sans-serif;
+  color: antiquewhite;
+  font-size: clamp(16px, 5vh, 50px);
+}

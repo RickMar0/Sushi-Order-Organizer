@@ -4,130 +4,94 @@
 <head lang="en">
   <title>Sushi Orders Organizer</title>
 
+  <!--fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
 
-  <style>
-    
-   @import url(https://fonts.google.com/share?selection.family=Protest+Revolution);
+  <!--styles-->
+  <link rel="stylesheet" href="./styles/general/general.css">
+  <link rel="stylesheet" href="./styles/header/header.css">
+  <link rel="stylesheet" href="./styles//sidebar/sidebar.css">
 
-   
-
-   body {
-    background-color: darkgrey;
-    max-width:90vw;
-    font-family: 'Protest Revolution';
-    font-size: 25px ;
-   }
-
-   .A {
-    max-width:50vw;
-    font-family: 'Protest Revolution';
-    font-size: 35px;
-    color: gray;
-    position: relative;
-    position: relative;
-    left: 150px;
-    top: 50px;
-   }
-
-   .B{
-    max-width:100vw;
-    font-family: 'Protest Revolution';
-    font-size: 35px;
-    color: gray;
-    position: relative;
-    left: 150px;
-    top: 50px;
-   }
-
-   .C {
-    max-width:50vw;
-    font-family: 'Protest Revolution';
-    font-size: 35px;
-    color: antiquewhite;
-    position: relative;
-    position: relative;
-    left: 150px;
-    top: 50px;
-   }
-
-   .D {
-    max-width:50vw;
-    font-family: 'Protest Revolution';
-    font-size: 35px;
-    color: antiquewhite;
-    position: relative;
-    position: relative;
-    left: 150px;
-    top: 50px;
-   }
-
-   .BG {
-    max-width:100vw;
-    z-index: -2;
-    object-fit: fill;
-    height: 150vh;
-    width: 100%;
-    position:absolute;
-    bottom: 0px;
-    left: 0px;
-   }
-    
-  </style>
 
 </head>
 
 <body>
 
-  <p class="D">
-    put the orders all together separated by a comma,<br>do not be afraid to put the same numbers again
-  </p>
+<!--header---------------------->
+  <header class="header">
+    <p class="placeholder">
+      put the orders all together separated by a comma,<br>do not be afraid to put the same numbers again
+    </p>
+  </header>
 
-  <input class="A" placeholder="e.g. 10, 10, 12">
+<!--sidebar--------------------->
+  <aside class="sidebar"> 
+    <div class="arrow">
+      ◀ <!--this arrow will reveal the contents when hovered on-->
+    </div>
+    <p class="sidebar-text">
+      made by 
+      <a href="https://github.com/RickMar0" class="github-link" target="_blank">
+        Riccardo Marogna
+      </a>
+    </p>
+    <div class="contacts-container">
+      <!--contacts here-->
+    </div>
+  </aside>
 
-  <button onclick="buttonPress();" class="B">Organize</button>
 
-  <button  class="B" onclick="Reset();">Reset</button>
+<!--i uncommented these (⬇⬇) items to get em on the page, i will later style properly-->
+  <input class="input" placeholder="e.g. 10, 10, 12">
 
-  <p class="C">your organized orders will appear here</p>
+  <button class="organize" onclick="buttonPress()">Organize</button>
 
-  <img src="./Design2.jpg" class="BG">
+  <button  class="reset" onclick="Reset();">Reset</button> <!-- ⬅these (you never know) -->
+
+  <p class="placeholder">your organized orders will appear here</p>
+<!--by "these items" i mean these (⬆⬆) ones above -->
+
 
   <script>
     
-    
-    let inputContent = document.querySelector(".A");
-    const Paragraph = document.querySelector(".C");
+    let inputContent = document.querySelector(".input");
+    //this is the input field where the user will type the orders
+
+
+    const Paragraph = document.querySelector(".placeholder");
+    //this is the paragraph where the output will be displayed
 
     function buttonPress () {
       
-      let array1 = document.querySelector(".A").value.split(','); //initialize input content
+      let array1 = document.querySelector(".input").value.split(',');
+      //initialize input content
 
-      let processedArray = array1.map(item => item.trim()).filter(item => item !== ''); //isolate each order-number and trim excess spaces then save into array
+      let processedArray = array1.map(item => item.trim()).filter(item => item !== '');
+      //isolate each order-number and trim excess spaces then save into array
 
-      const tracker = {}; //if an order-number isn't already in that array it is added with a default value of 1
+      const tracker = {};
       for (let i = 0; i < processedArray.length; i++ ) {
         if (!(processedArray[i] in tracker)) {
           tracker[processedArray[i]] = 1;
-        }  else {tracker[processedArray[i]] ++} // for each duplicate it gets added as a +1 value to its key
+        }  else {tracker[processedArray[i]] ++}
       };
-      let output = ""; // initialize empty string to hold final result
+      let output = "";
       for (const key in tracker) {
         output += `${key} x ${tracker[key]}<br>`;
-        Paragraph.innerHTML = output; //set the output as the paragraph's content
+        Paragraph.innerHTML = output;
       }
+      //checks if the order is already in the tracker object.
+      // if not, it adds it with a value of 1, otherwise it increments the value by 1.
       
     }
 
     function Reset()  {
       Paragraph.innerHTML = "your organized orders will appear here";
       inputContent.value = "";
-
     }
+    //goes without saying but this function resets the output paragraph and the input field
 
   </script>
 </body>
